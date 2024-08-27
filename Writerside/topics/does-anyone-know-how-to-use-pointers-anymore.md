@@ -24,7 +24,7 @@ jumps in red, and I also pointed out the allocation we are initializing in blue.
 the base of our inventory resides, for our indexing math. At the top, we start by calling `AllocateAligned` on our main
 heap allocator (Of which the setup is omitted, just trust me, bro). After the call we have our pointer returned in `RAX`, 
 as this is the convention in x86. We then test RAX against itself. The [`TEST`](https://www.felixcloutier.com/x86/test) mnemonic
-is an instruction that will and it's two operands together, and set various flag registers, one of which is `ZF`, or Zero 
+is an instruction that will "bitwise and" it's two operands together, and set various flag registers, one of which is `ZF`, or Zero 
 Flag. This flag is 1, or true, if the resulting value is 0. This can only happen with a value of zero in both operands,
 so this make a very efficient way of testing a pointer for null. We then move on to a [`JNZ`](https://www.felixcloutier.com/x86/jcc), 
 which is our first jump. This instruction will look at `ZF` and jump if it's set to 1. If we don't jump here, we fall to 
@@ -41,7 +41,7 @@ We keep going, do some indexing math, do a check, call a function, and then we c
 item in the array, which is in `R15`, and the current item index in `RDI`. We then jump right back to where we are doing
 pointer math with `R14` and friends. You may ask, where is the issue? Well, I kinda skipped over the check we do after the
 index math, because, that is the issue. Remember, `TEST` is going to and it's operands together and set the `ZF` flag to
-one ONLY IF the number is ZERO, as, anding any other number with itself will result in, well, that number.
+one ONLY IF the number is ZERO, as, bitwise anding any other number with itself will result in, well, that number.
 
 There are two instructions here, but in the end we take the value that is in `R14` and add `RAX * 0x8` to it, and then store
 that pointer value in `RCX`. Since the only operations we have done to `R14` are addition operations, one of which was adding
