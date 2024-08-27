@@ -62,10 +62,11 @@
         - name: Download artifacts
           uses: actions/download-artifact@v4
           with:
+            artifact: ${{ env.ARTIFACT }}
             name: docs
 
         - name: Unzip artifact
-          run: unzip -O UTF-8 -qq docs -d dir
+          run: unzip -O UTF-8 -qq '${{ env.ARTIFACT }}' -d dir
 
         - name: Setup Pages
           uses: actions/configure-pages@v4

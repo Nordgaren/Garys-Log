@@ -81,7 +81,7 @@ that has this null check in it? That doesn't really make any sense. Regardless, 
 by them checking `if (&alloc->firstEntry == nullptr)`, which just isn't going to be null. You are essentially asking the
 compiler to add an offset when you reference fields further the first one (ignore Ghidras stupid pseduo code above where
 it's referencing the first field. It's not incorrect, if you wanted the base of that structure. It's just stupid to write
-it like that).
+it like that). I am also surprised that MSVC didn't catch this? It's perfectly capable of doing so. 
 
 ## Conclusion
 Okay, so, I explained my problem, but, do I have a solution? Theoretically. I think we could probably write some Ghidra scripts
