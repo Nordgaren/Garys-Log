@@ -5,8 +5,8 @@ even allow this to happen?
 ## What is this about
 So, I have been wanting to just document some of the reverse engineering work that has been done by fellow soulsmodders,
 and myself. For one, so that we have a bit more documentation on the inner workings on the Dantelion 2 engine, the engine
-that the souls games are on, and a lot of the Armored Core games, as well. Kings Field? IDK. Maybe, I haven't looked. I 
-wanted to expand [ErdTools](https://github.com/Nordgaren/Erd-Tools/tree/main), A tool for debugging the game as it runs, 
+that the souls games are on, and a lot of the Armored Core games, as well. Kings Field? IDK. Maybe, I haven't looked. I also
+wanted to expand [ErdTools](https://github.com/Nordgaren/Erd-Tools/tree/main), a tool for debugging the game as it runs, 
 so that it could read the player inventory,as well as delete items and move them between inventories, so, I had to go and 
 track down the code that handles all of this. I also need this code for some future projects, but, for now, I figured it 
 would be cool to get started documenting things by documenting how the player inventory works.  
