@@ -48,13 +48,12 @@ that pointer value in `RCX`. Since the only operations we have done to `R14` are
 16 to whatever value was in `RAX` and storing it in `R14`, we will never have a situation where this math results in zero.
 That means our `TEST RCX, RCX` will never fail. 
 
-So, it's one instruction, right? Why is this an issue? Well, in this instance
-it's actually not bad at all, as this code only gets called at the game startup, but, it is done in a loop that has to iterate
-thousands of times, and, the loops never operate on a constant (In fact, this function makes three inventories, and each
-ones size is calculated at the start of the function). So, this behaviour could be quite rough on branch prediction, and 
-this game only runs on CPUs that heavily favor branch prediction. On top of this, if that earlier null check wasn't there,
-this code WILL crash your system on a null pointer, as the null check will fail and `0x10` is still invalid memory (on most
-machines, I guess).
+So, it's one instruction, right? Why is this an issue? Well, in this instance it's actually not bad at all, as this code 
+only gets called at the game startup, but, it is done in a loop that has to iterate thousands of times, and, the loops never 
+operate on a constant (In fact, this function makes three inventories, and each ones size is calculated at the start of the 
+function). So, this behaviour could be quite rough on branch prediction, and this game only runs on CPUs that heavily favor 
+branch prediction. On top of this, if that earlier null check wasn't there, this code WILL crash your system on a null pointer, 
+as the null check will fail and `0x10` is still invalid memory (on most machines, I guess).
 
 Here is a look at the pseudo code in Ghidra, cleaned up a little bit. I added a `ShimmedInventoryItemData` so that Ghidra
 would show a bit what I am talking about. `itemId` is just the first field in the `InventoryItemEntry`, which is why you
