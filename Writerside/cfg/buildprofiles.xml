@@ -5,6 +5,7 @@
 
     <build-profile instance="in">
         <variables>
+            <custom-favicons>when mod.png</custom-favicons>
             <noindex-content>true</noindex-content>
         </variables>
     </build-profile>
