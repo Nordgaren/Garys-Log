@@ -26,9 +26,9 @@ heap allocator (Of which the setup is omitted, just trust me, bro). After the ca
 as this is the convention in x86. We then test RAX against itself. The [`TEST`](https://www.felixcloutier.com/x86/test) mnemonic
 is an instruction that will and it's two operands together, and set various flag registers, one of which is `ZF`, or Zero 
 Flag. This flag is 1, or true, if the resulting value is 0. This can only happen with a value of zero in both operands,
-so this make a very efficient way of testing a pointer for null. We then move on to a [`JNZ`](https://www.felixcloutier.com/x86/jcc), which is our first jump. This 
-instruction will look at `ZF` and jump if it's set to 1. If we don't jump here, we fall to an unconditional jump that exits
-the function. This is good, and what we should expect from a C++ program like this.
+so this make a very efficient way of testing a pointer for null. We then move on to a [`JNZ`](https://www.felixcloutier.com/x86/jcc), 
+which is our first jump. This instruction will look at `ZF` and jump if it's set to 1. If we don't jump here, we fall to 
+an unconditional jump that exits the function. This is good, and what we should expect from a C++ program like this.
 
 What comes after is a bit peculiar, because, I know compilers are smarter than this. That first test has us jump and avoid
 exiting the function, if we get a non-null pointer back. This part of the function immediately adds `0x10`, which is 16 bytes,
@@ -90,7 +90,13 @@ follow the registers involved backwards, to figure out if there's every a non-ze
 against itself. I think this could be a free win for those who are looking to make performance mods to make any of the souls
 games. Starting here would be great, and I will post the results if/when I get around to making a script to patch these unnecessary
 checks out. This might even be something that has been going on for a while, which I will update here shortly if I, or any
-of the other soulsmodders can find this behaviour in previous games.  
+of the other soulsmodders can find this behaviour in previous games.  Maybe we could finally get blighttown above 10 FPS 
+on a 4090.
+
+Not sure what my next article here will be, but this will likely be more of a ranting place of things I find. Adobe next,
+maybe, because Premiere Pro has been crashing on me. :thinkus: If anyone knows a good wiki or doc type setup for me to
+start something to start making actual documentation on these systems for the souls games, and so that others can contribute,
+@ me on Twitter or something, idk.
 
 ## Glossary
 
