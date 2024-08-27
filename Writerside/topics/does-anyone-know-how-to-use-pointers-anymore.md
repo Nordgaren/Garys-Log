@@ -56,8 +56,7 @@ branch prediction. On top of this, if that earlier null check wasn't there, this
 as the null check will fail and `0x10` is still invalid memory (on most machines, I guess).
 
 Here is a look at the pseudo code in Ghidra, cleaned up a little bit. I added a `ShimmedInventoryItemData` so that Ghidra
-would show a bit what I am talking about. `itemId` is just the first field in the `InventoryItemEntry`, which is why you
-see the code getting the address of it (silly). Again, this is pseudo code, but, I honestly thought Ghidra was drunk, when
+would show a bit what I am talking about. Again, this is pseudo code, but, I honestly thought Ghidra was drunk, when
 I first saw this.
 
 ![pseudocode.png](pseudocode.png)
